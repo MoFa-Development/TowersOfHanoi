@@ -45,10 +45,10 @@ public class CLIVisualization extends Visualization
         Integer[] intermediate = hanoi.getIntermediate().toArray(new Integer[0]);
         Integer[] destination = hanoi.getDestination().toArray(new Integer[0]);
 
-        repeatedPrint(80, "-");
+        repeatedPrint(6*hanoi.getAmountDisks()+11, "-");
         System.out.print("\n\n");
 
-        for(int i = hanoi.getAmountDisks(); i >= 0; i--) {
+        for(int i = hanoi.getAmountDisks()-1; i >= 0; i--) {
             System.out.print(" ");
 
             drawLayerOfStick(i, source);
@@ -59,7 +59,7 @@ public class CLIVisualization extends Visualization
             System.out.println("");
         }
 
-        repeatedPrint(80, "-");
+        repeatedPrint(6*hanoi.getAmountDisks()+11, "-");
         System.out.println("");
     }
 }
