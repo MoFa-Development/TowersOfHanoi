@@ -1,7 +1,5 @@
 package hanoi.visualization;
 
-import java.lang.reflect.Array;
-
 import hanoi.Hanoi;
 
 /**
