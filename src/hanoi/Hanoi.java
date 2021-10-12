@@ -46,7 +46,6 @@ public class Hanoi
   {
     amountDisks = startAmountDisks;
     
-    //vis = new GUIVisualization(this);
     vis = new CLIVisualization(this);
     
     source = new Stick();
