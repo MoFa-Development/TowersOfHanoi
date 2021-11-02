@@ -59,7 +59,20 @@ public class Hanoi
     doHanoi();
   }
 
-  public void doHanoi() {
+  public void doHanoi()
+  {
+    Stick[] sticks = {source, intermediate, destination};
     vis.draw();
+
+    for(Stick from : sticks) {
+      for(Stick to : sticks) {
+        if (from == to || from.empty())
+          continue;
+        if(to.isEmpty() || from.peek() < to.peek()) {
+          from.moveTopDiskToStick(to);
+        }
+        vis.draw();
+      }
+    }
   }
 }
