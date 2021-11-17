@@ -21,18 +21,22 @@ public class Hanoi
 
   public static void main(String[] args)
   {
-    new Hanoi(10);
+    new Hanoi(5).run();
   }
 
   public Hanoi(int N)
   {
     vis = new CLIVisualization(this);
-    
+    this.N = N;
     A = new Stick();
     B = new Stick();
     C = new Stick();
+  }
 
-    this.N = N;
+  public void run() {
+    A.clear();
+    B.clear();
+    C.clear();
 
     for(int i = N; i > 0; i--) {
       A.push(i);
