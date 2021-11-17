@@ -21,7 +21,8 @@ public class Hanoi
 
   public static void main(String[] args)
   {
-    new Hanoi(5).run();
+    Hanoi hanoi = new Hanoi(5);
+    hanoi.run();
   }
 
   public Hanoi(int N)
@@ -34,6 +35,7 @@ public class Hanoi
   }
 
   public void run() {
+    steps = 0;
     A.clear();
     B.clear();
     C.clear();
@@ -42,6 +44,7 @@ public class Hanoi
       A.push(i);
     }
 
+    vis.draw();
     doHanoi(A, B, C, N);
 
     System.out.print("Needed steps: ");
