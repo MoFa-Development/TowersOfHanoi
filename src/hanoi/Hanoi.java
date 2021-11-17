@@ -21,7 +21,7 @@ public class Hanoi
 
   public static void main(String[] args)
   {
-    new Hanoi(4);
+    new Hanoi(10);
   }
 
   public Hanoi(int N)
