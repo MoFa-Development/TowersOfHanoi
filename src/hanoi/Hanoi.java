@@ -40,17 +40,9 @@ public class Hanoi
   }
 
   public void doHanoi(Stick src, Stick randy, Stick dst, int n)
-  { 
-    Stick nextSrc;
-    Stick nextRandy;
-    Stick nextDst;
-    
+  {
     if(n > 1) {
-      nextSrc = src;
-      nextRandy = dst;
-      nextDst = randy;
-
-      doHanoi(nextSrc, nextRandy, nextDst, n-1);
+      doHanoi(src, dst, randy, n-1);
     }
 
     src.moveTopDiskToStick(dst);
