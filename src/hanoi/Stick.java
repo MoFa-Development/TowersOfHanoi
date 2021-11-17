@@ -10,7 +10,7 @@ import java.util.Stack;
 public class Stick extends Stack<Integer>
 {
     public Integer moveTopDiskToStick(Stick stick) throws EmptyStackException {
-        if(this.peek() == null) {
+        if(this.empty()) {
             return 0;
         }
 
