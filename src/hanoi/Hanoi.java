@@ -17,9 +17,11 @@ public class Hanoi
   
   public final int N;
 
+  private int steps;
+
   public static void main(String[] args)
   {
-    new Hanoi(10);
+    new Hanoi(4);
   }
 
   public Hanoi(int N)
@@ -37,6 +39,9 @@ public class Hanoi
     }
 
     doHanoi(A, B, C, N);
+
+    System.out.print("Needed steps: ");
+    System.out.println(this.steps);
   }
 
   public void doHanoi(Stick src, Stick randy, Stick dst, int n)
@@ -45,7 +50,8 @@ public class Hanoi
       doHanoi(src, dst, randy, n-1);
     }
 
-    src.moveTopDiskToStick(dst);
+    src.moveTopTo(dst);
+    this.steps++;
     vis.draw();
 
     if(n > 1) {
