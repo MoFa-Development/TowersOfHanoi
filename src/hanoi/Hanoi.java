@@ -9,70 +9,45 @@ import hanoi.visualization.Visualization;
  */
 public class Hanoi
 {
-  protected Stick source;
-  protected Stick intermediate;
-  protected Stick destination;
-  protected int amountDisks;
-
-  private Visualization vis;
-
-
-  public int getAmountDisks()
-  {
-    return amountDisks;
-  }
-
-  public Stick getSource()
-  {
-    return source;
-  }
-
-  public Stick getIntermediate()
-  {
-    return intermediate;
-  }
-
-  public Stick getDestination()
-  {
-    return destination;
-  }
+  protected Visualization vis;
+  
+  public Stick a;
+  public Stick b;
+  public Stick c;
+  
+  public int n;
 
   public static void main(String[] args)
   {
     new Hanoi(10);
   }
 
-  public Hanoi(int startAmountDisks)
+  public Hanoi(int n)
   {
-    amountDisks = startAmountDisks;
-    
     vis = new CLIVisualization(this);
     
-    source = new Stick();
-    intermediate = new Stick();
-    destination = new Stick();
-    
-    for(int i = startAmountDisks; i > 0; i--) {
-      source.push(i);
+    a = new Stick();
+    b = new Stick();
+    c = new Stick();
+
+    this.n = n;
+
+    for(int i = n; i > 0; i--) {
+      a.push(i);
     }
 
-    doHanoi();
+    doHanoi(a, b, c, n);
   }
 
-  public void doHanoi()
+  public void doHanoi(Stick ursprung, Stick randy, Stick ziel, int n)
   {
-    Stick[] sticks = {source, intermediate, destination};
-    vis.draw();
-
-    for(Stick from : sticks) {
-      for(Stick to : sticks) {
-        if (from == to || from.empty())
-          continue;
-        if(to.isEmpty() || from.peek() < to.peek()) {
-          from.moveTopDiskToStick(to);
-        }
-        vis.draw();
-      }
+    if(n>0)
+    {
+      doHanoi(randy, ursprung, ziel, n-1);
     }
+
+    ursprung.moveTopDiskToStick(ziel);
+
+    vis.draw();
   }
 }
