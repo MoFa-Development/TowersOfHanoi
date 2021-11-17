@@ -11,43 +11,53 @@ public class Hanoi
 {
   protected Visualization vis;
   
-  public Stick a;
-  public Stick b;
-  public Stick c;
+  public final Stick A;
+  public final Stick B;
+  public final Stick C;
   
-  public int n;
+  public final int N;
 
   public static void main(String[] args)
   {
     new Hanoi(10);
   }
 
-  public Hanoi(int n)
+  public Hanoi(int N)
   {
     vis = new CLIVisualization(this);
     
-    a = new Stick();
-    b = new Stick();
-    c = new Stick();
+    A = new Stick();
+    B = new Stick();
+    C = new Stick();
 
-    this.n = n;
+    this.N = N;
 
-    for(int i = n; i > 0; i--) {
-      a.push(i);
+    for(int i = N; i > 0; i--) {
+      A.push(i);
     }
 
-    doHanoi(a, b, c, n);
+    doHanoi(A, B, C, N);
   }
 
-  public void doHanoi(Stick ursprung, Stick randy, Stick ziel, int n)
-  {
-    if(n>0)
-    {
-      doHanoi(randy, ursprung, ziel, n-1);
+  public void doHanoi(Stick src, Stick randy, Stick dst, int n)
+  { 
+    Stick nextSrc;
+    Stick nextRandy;
+    Stick nextDst;
+    
+    if(n > 1) {
+      nextSrc = src;
+      nextRandy = dst;
+      nextDst = randy;
+
+      doHanoi(nextSrc, nextRandy, nextDst, n-1);
     }
 
-    ursprung.moveTopDiskToStick(ziel);
-
+    src.moveTopDiskToStick(dst);
     vis.draw();
+
+    if(n > 1) {
+      doHanoi(randy, src, dst, n-1);
+    }
   }
 }

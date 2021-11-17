@@ -25,23 +25,25 @@ public class CLIVisualization extends Visualization
             r = stickArr[i];
         }
 
+        repeatedPrint(hanoi.N-r, " ");
         repeatedPrint(r, "=");
 
         System.out.print("#");
 
         repeatedPrint(r, "=");
+        repeatedPrint(hanoi.N-r, " ");
     } 
 
     @Override
     public void draw()
     {   
-        Integer[] source = hanoi.a.toArray(new Integer[0]);
-        Integer[] intermediate = hanoi.b.toArray(new Integer[0]);
-        Integer[] destination = hanoi.c.toArray(new Integer[0]);
+        Integer[] source = hanoi.A.toArray(new Integer[0]);
+        Integer[] intermediate = hanoi.B.toArray(new Integer[0]);
+        Integer[] destination = hanoi.C.toArray(new Integer[0]);
 
         System.out.print("\n\n");
 
-        for(int i = hanoi.n-1; i >= 0; i--) {
+        for(int i = hanoi.N-1; i >= 0; i--) {
             System.out.print(" ");
 
             drawLayerOfStick(i, source);
